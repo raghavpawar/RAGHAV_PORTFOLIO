@@ -1,0 +1,30 @@
+/* Buttons */
+.btn {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: var(--space-2) var(--space-4);
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.btn--accent {
+  color: var(--color-accent-text);
+  background-color: var(--color-accent);
+}
+
+.btn--accent:hover {
+  opacity: 0.9;
+}
+
+.btn--outline {
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.btn--outline:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-text);
+}

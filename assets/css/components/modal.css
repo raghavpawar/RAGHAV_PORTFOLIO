@@ -1,0 +1,97 @@
+/* Case-study modal — glassmorphic surface, the site's one deliberate glass moment (alongside nav) */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.modal[aria-hidden="false"] {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal__panel {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: var(--color-glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 16px;
+  padding: var(--space-5);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: translateY(12px);
+  transition: transform 0.25s ease;
+}
+
+.modal[aria-hidden="false"] .modal__panel {
+  transform: translateY(0);
+}
+
+.modal__close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+}
+
+.modal__close:hover {
+  color: var(--color-text);
+}
+
+/* Case-study content blocks, rendered inside .modal__content */
+.case-study__title {
+  font-size: 1.75rem;
+  margin-bottom: var(--space-4);
+}
+
+.case-study__block {
+  margin-bottom: var(--space-4);
+}
+
+.case-study__block h4 {
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2);
+}
+
+.case-study__block p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+/* Media gallery — screenshots/recordings, added per case study once assets are ready */
+.case-study__media {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.case-study__media img,
+.case-study__media video {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+}

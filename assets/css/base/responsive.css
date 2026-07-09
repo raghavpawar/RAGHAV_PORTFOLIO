@@ -1,0 +1,66 @@
+/* Responsive overrides — mobile breakpoint */
+@media (max-width: 640px) {
+  .nav__links a:not(.nav__resume-btn) {
+    display: none;
+  }
+
+  .nav__toggle {
+    display: flex;
+  }
+
+  #hero {
+    min-height: auto;
+  }
+
+  .hero__inner {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-5);
+  }
+
+  .hero__title {
+    font-size: 1.75rem;
+  }
+
+  .hero__links {
+    gap: var(--space-3);
+    font-size: 0.85rem;
+  }
+
+  .work__grid,
+  .skills__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .about__photo-frame {
+    width: 140px;
+    height: 140px;
+  }
+
+  .timeline {
+    padding-left: var(--space-4);
+  }
+
+  .timeline__marker {
+    left: calc(-1 * var(--space-4) - 5px);
+  }
+
+  .timeline__header {
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .modal__panel {
+    padding: var(--space-4);
+    max-height: 90vh;
+  }
+
+  .case-study__title {
+    font-size: 1.4rem;
+  }
+}

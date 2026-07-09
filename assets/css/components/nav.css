@@ -1,0 +1,97 @@
+/* Nav */
+#nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+  background-color: rgba(13, 13, 15, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__logo {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.nav__links a:not(.nav__resume-btn):hover {
+  color: var(--color-text);
+}
+
+.nav__resume-btn {
+  color: var(--color-accent-text);
+  background-color: var(--color-accent);
+  padding: var(--space-1) var(--space-3);
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.nav__resume-btn:hover {
+  color: var(--color-accent-text);
+  opacity: 0.9;
+}
+
+/* Hamburger toggle — hidden on desktop */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+}
+
+.nav__toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav__toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav__toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav__toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile dropdown — hidden on desktop, toggled via JS on small screens */
+.nav__mobile {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.nav__mobile a:hover {
+  color: var(--color-text);
+}
+
+.nav__mobile[data-open="true"] {
+  display: flex;
+}

@@ -1,0 +1,114 @@
+/* Hero */
+#hero {
+  --spotlight-x: 50%;
+  --spotlight-y: 50%;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--color-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center;
+  -webkit-mask-image: radial-gradient(ellipse 700px 550px at var(--spotlight-x) var(--spotlight-y), black 0%, transparent 80%);
+  mask-image: radial-gradient(ellipse 700px 550px at var(--spotlight-x) var(--spotlight-y), black 0%, transparent 80%);
+  pointer-events: none;
+}
+
+.hero__inner {
+  position: relative;
+  max-width: 780px;
+}
+
+.hero__eyebrow {
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-3);
+}
+
+.hero__title {
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: var(--space-5);
+}
+
+.hero__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  font-size: 0.95rem;
+  margin-bottom: var(--space-5);
+}
+
+.hero__links a {
+  color: var(--color-text-muted);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+
+.hero__links a:hover {
+  color: var(--color-text);
+  border-bottom-color: var(--color-text-muted);
+}
+
+/* Scroll-down cue */
+.hero__scroll-cue {
+  position: absolute;
+  bottom: var(--space-5);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.hero__scroll-cue-text {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.hero__scroll-cue-line {
+  position: relative;
+  width: 1px;
+  height: 36px;
+  background-color: var(--color-border);
+  overflow: hidden;
+}
+
+.hero__scroll-cue-line::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background-color: var(--color-accent);
+  animation: scroll-cue-drop 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-cue-drop {
+  0% { top: -20px; }
+  60% { top: 36px; }
+  100% { top: 36px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll-cue-line::after {
+    animation: none;
+    top: 16px;
+  }
+}
