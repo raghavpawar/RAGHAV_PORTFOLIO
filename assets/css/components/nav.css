@@ -31,8 +31,10 @@
   color: var(--color-text-muted);
 }
 
-.nav__links a:not(.nav__resume-btn):hover {
-  color: var(--color-text);
+@media (hover: hover) and (pointer: fine) {
+  .nav__links a:not(.nav__resume-btn):hover {
+    color: var(--color-text);
+  }
 }
 
 .nav__resume-btn {
@@ -43,9 +45,11 @@
   font-weight: 600;
 }
 
-.nav__resume-btn:hover {
-  color: var(--color-accent-text);
-  opacity: 0.9;
+@media (hover: hover) and (pointer: fine) {
+  .nav__resume-btn:hover {
+    color: var(--color-accent-text);
+    opacity: 0.9;
+  }
 }
 
 /* Hamburger toggle — hidden on desktop */
@@ -88,8 +92,10 @@
   color: var(--color-text-muted);
 }
 
-.nav__mobile a:hover {
-  color: var(--color-text);
+@media (hover: hover) and (pointer: fine) {
+  .nav__mobile a:hover {
+    color: var(--color-text);
+  }
 }
 
 .nav__mobile[data-open="true"] {

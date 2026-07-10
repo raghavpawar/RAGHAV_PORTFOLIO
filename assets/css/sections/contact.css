@@ -40,8 +40,10 @@
   padding-bottom: 2px;
 }
 
-.contact__links a:hover {
-  border-bottom-color: var(--color-accent);
+@media (hover: hover) and (pointer: fine) {
+  .contact__links a:hover {
+    border-bottom-color: var(--color-accent);
+  }
 }
 
 /* Footer */

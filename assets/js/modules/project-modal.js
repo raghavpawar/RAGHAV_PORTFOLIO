@@ -9,6 +9,10 @@ const projectData = {
       "I built Fest Connect solo from scratch — Flutter attendee app, organiser app, and backend — and led development of a web-based admin dashboard alongside it. I set up the entire AWS infrastructure, then migrated it to Azure, building CI/CD pipelines for Flutter, React, and Node.js along the way. I added a Grafana and Prometheus observability stack with priority-tiered Slack alerting, built a Redis-backed ad engine with idempotency and fraud prevention for brand sponsors, shipped a real-time judging platform for live event scoring, and introduced TDD across the codebase achieving 90%+ unit test coverage.",
     impact:
       "Fest Connect went from zero to production-ready in 3 months and is now used by 5,000+ students across 3 colleges — MAMC Delhi, CCET Chandigarh, and MNNIT Allahabad.",
+    links: [
+      { store: "apple", href: "https://apps.apple.com/in/app/fest-connect/id6751292964" },
+      { store: "google", href: "https://play.google.com/store/apps/details?id=com.festconnect.app&hl=en_IN" },
+    ],
     media: [
       { type: "video", src: "assets/images/fc/festconnect-vid-1.mp4" },
       { type: "image", src: "assets/images/fc/festconnect-img-2.jpg" },
@@ -28,6 +32,10 @@ const projectData = {
       "I built an offline-first Flutter scanning app in one week. All scan data persisted locally via Hive and synced back to the server when connectivity was restored, so check-in continued without interruption regardless of network state.",
     impact:
       "Deployed at MAMC Delhi's live fest. Check-in time for 1,000 students dropped from 3 hours to 1 hour on the first deployment.",
+    links: [
+      { store: "apple", href: "https://apps.apple.com/in/app/fest-connect-organiser/id6754449638" },
+      { store: "google", href: "https://play.google.com/store/apps/details?id=com.festconnect.organiser&hl=en_IN" },
+    ],
     media: [
       { type: "image", src: "assets/images/fc_org/scanning-img-3.jpg" },
       { type: "video", src: "assets/images/fc_org/scanning-vid-1.mp4" },
@@ -43,6 +51,10 @@ const projectData = {
       "I migrated the entire codebase from Android to Flutter and redesigned the product from scratch. As the sole Flutter developer, I built three apps: the consumer app, a delivery rider app, and a supplier onboarding app with offline-first persistent caching. I led the architectural overhaul from single-supplier to a Blinkit-style multi-supplier marketplace with location-based order routing, defined all API contracts and business rules, and coordinated the backend team through full implementation. I also architected a wallet-based auto-debit subscription system — designed the backend logic, wrote the business rules, and implemented it in the app — which increased subscription orders by 50%. CI/CD via Fastlane and GitHub Actions across all three apps.",
     impact:
       "Ones Need now handles 500+ daily orders and serves 3,000+ families across Delhi-NCR and Greater Noida.",
+    links: [
+      { store: "apple", href: "https://apps.apple.com/in/app/ones-need/id6745020823" },
+      { store: "google", href: "https://play.google.com/store/apps/details?id=onesneed.shopping.onesneed.in.onesneed&hl=en_IN" },
+    ],
     media: [
       { type: "image", src: "assets/images/on/onesneed-img-1.jpg" },
       { type: "video", src: "assets/images/on/onesneed-vid-1.mp4" },
@@ -55,6 +67,26 @@ const projectData = {
     ],
   },
 };
+
+const STORE_ICONS = {
+  apple: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.014-.11-.032-.23-.032-.36 0-1.14.628-2.297 1.336-3.02.837-.845 2.19-1.483 3.14-1.518.014.086.02.176.02.278zM20.68 17.28c-.518 1.12-.764 1.62-1.43 2.61-.93 1.37-2.24 3.08-3.865 3.09-1.44.02-1.81-.94-3.766-.93-1.955.01-2.37.95-3.812.93-1.62-.02-2.86-1.55-3.79-2.92C1.58 17.65.6 13.72 1.85 11.05c.75-1.62 2.1-2.65 3.56-2.68 1.42-.03 2.76.96 3.63.96.87 0 2.49-1.18 4.2-1.01.71.03 2.72.29 4.01 2.17-.104.065-2.396 1.4-2.372 4.18.028 3.33 2.92 4.44 2.95 4.45-.024.075-.463 1.6-1.15 3.15z"/></svg>',
+  google: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
+};
+
+function renderStoreBadge(link) {
+  const isApple = link.store === 'apple';
+  const eyebrow = isApple ? 'Download on the' : 'GET IT ON';
+  const name = isApple ? 'App Store' : 'Google Play';
+  return `
+    <a class="store-badge" href="${link.href}" target="_blank" rel="noopener noreferrer">
+      <span class="store-badge__icon">${STORE_ICONS[link.store]}</span>
+      <span class="store-badge__text">
+        <span class="store-badge__eyebrow">${eyebrow}</span>
+        <span class="store-badge__name">${name}</span>
+      </span>
+    </a>
+  `;
+}
 
 function renderMedia(item) {
   if (item.type === "video") {
@@ -75,8 +107,15 @@ export function initProjectModal() {
     const data = projectData[projectId];
     if (!data) return;
 
+    const linksHtml = data.links && data.links.length
+      ? `<div class="case-study__links">
+          ${data.links.map(renderStoreBadge).join("")}
+        </div>`
+      : "";
+
     contentEl.innerHTML = `
       <h3 class="case-study__title">${data.title}</h3>
+      ${linksHtml}
       <div class="case-study__media">
         ${data.media.map(renderMedia).join("")}
       </div>

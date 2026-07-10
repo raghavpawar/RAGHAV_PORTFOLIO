@@ -28,7 +28,8 @@
   }
 
   .work__grid,
-  .skills__grid {
+  .skills__grid,
+  .capabilities__grid {
     grid-template-columns: 1fr;
   }
 
@@ -57,11 +58,20 @@
   }
 
   .modal__panel {
-    padding: var(--space-4);
     max-height: 90vh;
+  }
+
+  .modal__content {
+    padding: var(--space-4);
+    padding-top: var(--space-6);
   }
 
   .case-study__title {
     font-size: 1.4rem;
+  }
+
+  .case-study__media {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
   }
 }

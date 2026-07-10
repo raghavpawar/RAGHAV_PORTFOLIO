@@ -22,9 +22,11 @@
   transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
-.project-card:hover {
-  border-color: rgba(255, 255, 255, 0.18);
-  transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
+  }
 }
 
 .project-card__mockup {
@@ -64,6 +66,8 @@
   border-bottom: 1px solid transparent;
 }
 
-.project-card:hover .project-card__cta {
-  border-bottom-color: var(--color-accent);
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover .project-card__cta {
+    border-bottom-color: var(--color-accent);
+  }
 }

@@ -57,9 +57,11 @@
   padding-bottom: 2px;
 }
 
-.hero__links a:hover {
-  color: var(--color-text);
-  border-bottom-color: var(--color-text-muted);
+@media (hover: hover) and (pointer: fine) {
+  .hero__links a:hover {
+    color: var(--color-text);
+    border-bottom-color: var(--color-text-muted);
+  }
 }
 
 /* Scroll-down cue */

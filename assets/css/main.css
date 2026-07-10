@@ -20,6 +20,7 @@
 /* Sections */
 @import url("sections/hero.css");
 @import url("sections/about.css");
+@import url("sections/capabilities.css");
 @import url("sections/experience.css");
 @import url("sections/work.css");
 @import url("sections/skills.css");

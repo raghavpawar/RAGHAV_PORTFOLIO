@@ -25,19 +25,20 @@
 
 .modal__panel {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 960px;
   max-height: 90vh;
-  overflow-y: auto;
   background-color: var(--color-glass-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--color-glass-border);
   border-radius: 16px;
-  padding: var(--space-5);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   transform: translateY(12px);
   transition: transform 0.25s ease;
+  overflow: hidden;
 }
 
 .modal[aria-hidden="false"] .modal__panel {
@@ -51,16 +52,78 @@
   font-size: 1.5rem;
   line-height: 1;
   color: var(--color-text-muted);
+  z-index: 1;
 }
 
-.modal__close:hover {
-  color: var(--color-text);
+@media (hover: hover) and (pointer: fine) {
+  .modal__close:hover {
+    color: var(--color-text);
+  }
 }
 
 /* Case-study content blocks, rendered inside .modal__content */
+.modal__content {
+  overflow-y: auto;
+  padding: var(--space-5);
+}
+
 .case-study__title {
   font-size: 1.75rem;
   margin-bottom: var(--space-4);
+}
+
+.case-study__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+/* App Store / Google Play badges */
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-color: var(--color-bg-raised);
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .store-badge:hover {
+    border-color: var(--color-accent);
+  }
+}
+
+.store-badge__icon {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+
+.store-badge__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.store-badge__eyebrow {
+  font-size: 0.6rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.store-badge__name {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 .case-study__block {
@@ -92,6 +155,8 @@
 .case-study__media img,
 .case-study__media video {
   width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
   border-radius: 10px;
   border: 1px solid var(--color-border);
 }
